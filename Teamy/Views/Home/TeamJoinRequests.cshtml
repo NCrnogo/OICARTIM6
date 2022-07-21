@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Teamy.Models.TeamRequest>
+
+@{
+    ViewBag.Title = "TeamJoinRequests";
+    Layout = "~/Views/Shared/TeamLayoutOwner.cshtml";
+}
+
+<h2>Requests from users:</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+           <td> @Html.ActionLink("Accept", "RequestAccepted", new {  id=item.UserId  }) </td>
+            <td>@Html.ActionLink("Dismiss", "RequestDismissed", new {  id=item.UserId  }) </td>
+    </tr>
+}
+
+</table>

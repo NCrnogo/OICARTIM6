@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Teamy.Models.Users>
+
+@{
+    ViewBag.Title = "TeamUsersAdmin";
+    Layout = "~/Views/Shared/TeamLayoutOwner.cshtml";
+}
+
+<h1>@ViewBag.tim</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roll)
+        </th>
+        <th> Remove user </th>
+        <th> Make owner </th>
+        <th> Make teacher </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    @if (item.Name == "" || item.Name == null) { }
+    else
+    {
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Roll)
+    </td>          
+
+        if (item.Roll != "Owner")
+        {
+        <td>@Html.ActionLink("Remove", "RemoveUser", new { teamName = ViewBag.tim, userId = item.Id }) </td>
+        if (item.Roll == "Teacher") { }
+        else
+        {
+        <td>@Html.ActionLink("Make Owner", "MakeUserOwner", new { teamName = ViewBag.tim, userId = item.Id })</td>
+        <td>@Html.ActionLink("Make Teacher", "MakeUserTeacher", new { userId = item.Id })</td>
+        }
+    }
+    }
+</tr>
+}
+
+</table>

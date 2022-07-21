@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Teamy.Models.Teams>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Teams</h2>
+
+<p>
+    @Html.ActionLink("Create new Team", "CreateTeam")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.Label("Owner name")
+        </th>
+        <th>
+            @Html.Label("Date created")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.ActionLink("Visit", "TeamUsers", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

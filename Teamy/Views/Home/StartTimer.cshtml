@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = "~/Views/Shared/CounterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<head><script src="~/Scripts/Timer.js"></script></head>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Timer</title>
+</head>
+<body onload="changeState()">
+    <p><span id="my_timer" style="color:red;font-size:2000%;font-weight:bold;">00:00:00</span></p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button"
+                   value="Stop"
+                   style="color:red;width:50%;height:10vh;font-size:300%;margin-left:25%;font-weight:bold;"
+                   onclick="location.href='@Url.Action("SaveWorkItem", "Home")'" />
+        </div>
+    </div>
+</body>
+</html>
